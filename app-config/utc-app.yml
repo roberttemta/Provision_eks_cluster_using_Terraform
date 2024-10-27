@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ # namespace: dev
+  name: utc-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: 042010941106.dkr.ecr.us-east-1.amazonaws.com/geoapp:48
+        #image: kserge2001/pod-host
+        resources:
+          limits:
+            memory: "250Mi"
+            #cpu: "400m"
+          requests:
+            memory: "150Mi"
+            #cpu: "400m"
