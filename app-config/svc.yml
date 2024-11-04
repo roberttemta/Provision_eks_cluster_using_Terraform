@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: geoapp-service                           
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+    env: dev
+  ports:
+  - name: utrains-service-port
+    protocol: TCP
+    port: 80
+    targetPort: 8082

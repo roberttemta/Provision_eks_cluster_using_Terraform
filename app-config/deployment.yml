@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utc-app
+  labels:
+    app: nginx
+    env: dev
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: dev
+    spec:
+      containers:
+      - name: geoapp
+        image: 042010941106.dkr.ecr.us-east-1.amazonaws.com/geoapp:48
+        ports:
+        - containerPort: 8082
+      tolerations:  # Thisis useful when you have nodes tainted
+      - key: "color"
+        operator: "Equal"  # 
+        value: "green"
+        effect: "NoSchedule"

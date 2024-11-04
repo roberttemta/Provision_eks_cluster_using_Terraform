@@ -5,9 +5,9 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: httpd
   ports:
-  - name: utrains-service-port
+  - name: httpd-service-port
     protocol: TCP
     port: 80
-    targetPort: 8082
+    targetPort: 80
